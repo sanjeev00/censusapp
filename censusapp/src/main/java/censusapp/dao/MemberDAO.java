@@ -24,14 +24,12 @@ public class MemberDAO {
             throwables.printStackTrace();
         }
         return null;
-        //return CensusApplication.session.createQuery("from Member").getResultList();
+       
     }
 
     public boolean addMember(Member member)
     {
-        CensusApplication.session.beginTransaction();
-        CensusApplication.session.save(member);
-        CensusApplication.session.getTransaction().commit();
+       
         return true;
     }
 

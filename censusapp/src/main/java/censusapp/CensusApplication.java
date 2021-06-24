@@ -11,14 +11,11 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class CensusApplication {
-    public static Session session;
+    
     public static Connection con;
     public static void main(String args[])
     {
-        SessionFactory factory = new Configuration().configure("hibernate_cfg.xml").
-                addAnnotatedClass(Member.class).buildSessionFactory();
-    	
-         session = factory.openSession();
+       
 
 
         try {
@@ -72,6 +69,6 @@ public class CensusApplication {
             }
             break;
         }
-    	    factory.close();
+    	    
     }
 }
