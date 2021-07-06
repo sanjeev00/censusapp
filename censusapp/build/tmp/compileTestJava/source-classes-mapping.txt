@@ -1,2 +1,0 @@
-censusapp/MemberTest.java
- censusapp.MemberTest

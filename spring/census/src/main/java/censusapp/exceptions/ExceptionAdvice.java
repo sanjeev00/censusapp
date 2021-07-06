@@ -3,6 +3,7 @@ package censusapp.exceptions;
 import javassist.expr.Instanceof;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.TransactionSystemException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,7 +19,9 @@ import java.util.Map;
 public class ExceptionAdvice {
 
 
-
+    /*
+        validate before controller
+     */
     @ResponseBody
     @ExceptionHandler(InvalidMemberException.class)
     public ResponseEntity<Map<String,String>> validationExceptions(InvalidMemberException ex) {
@@ -32,6 +35,22 @@ public class ExceptionAdvice {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
+        return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
+    }
+
+    /*
+    validate before persist
+     */
+    @ResponseBody
+    @ExceptionHandler(TransactionSystemException.class)
+    public ResponseEntity<Map<String,String>> validationExceptions(Exception exc) {
+        Throwable cause = ((TransactionSystemException) exc).getRootCause();
+        Map<String, String> errors = new HashMap<>();
+        ((ConstraintViolationException)cause).getConstraintViolations().forEach((error)->{
+            errors.put(error.getPropertyPath().toString(),error.getMessage());
+        });
+
+
         return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
     }
 

@@ -18,12 +18,7 @@
     {
         background-color: #25bc27;
     }
-
-    .form-control
-    {
-        min-width:100px;
-    }
-
+   
     .row
     {
         padding:20px 5px;
@@ -59,46 +54,44 @@
     <div class="col col-3 sidecard">
 
     </div>
-    <div class="col col-9 maincard">
-<h1>
-    Add Member
-</h1>
+    <div class="col col-md-9 maincard">
+<h2>
+    HouseHold Relationship
+</h2>
 <form action="member" method="post">
     <div class="row">
-        <div class="col">
-            First Name<input type="text" name="firstName" class="form-control">
-        </div>
-        <div class="col">
-            Middle Name<input type="text" name="middleName" class="form-control">
-        </div>
-        <div class="col">
-            Last Name<input type="text" name="lastName" class="form-control">
-        </div>
-        <div class="col">
-            Date of Birth
-            <input type="date" name="dateOfBirth" class="form-control">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="d-flex flex-column">
-                Gender
-                <div class="d-flex ">
-                    <div class="option"><input type="radio" class="form-check-input" name="gender" value="male">male</div>
-                    <div class="option"><input type="radio" class="form-check-input" name="gender" value="female">female</div>
+        <b>Sample's relationships</b>
+        <div class="col-md-8">
+            <div class='row'>
+                <div class="col-auto">
+                Relation to member one
+                </div>
+                <div class="col-md-5 col-sm-12">
+                <select name="member1" class="form-select">
+                    <option value="father">Father</option>
+                    <option value="father">Mother</option>
+                </select>
                 </div>
             </div>
-        </div>
+            <div class='row'>
+                <div class="col-auto">
+                Relation to member two
+                </div>
+                <div class="col-md-5 col-xs-12">
+                <select name="member2" class="form-select">
+                    <option value="father">Father</option>
+                    <option value="father">Mother</option>
+                </select>
+                </div>
+            </div>
+        </div>    
     </div>
-    <div class="row">
-    <div class="col-12">
-        <input class="btn btn-success add-member float-end " type="submit" value="Add Member">
-    </div>    
-    </div>
+    
+    
 </form>
 <div class="col-12">
     <button class="btn btn-success">Save and Exit</button>
-    <a class="btn btn-success float-end" href='relation.html'>Next</a>
+    <button class="btn btn-success float-end">Next</button>
         <button class="btn btn-success float-end">Back</button>
 </div>
 

@@ -6,11 +6,16 @@ import censusapp.entities.MemberRepository;
 import java.util.List;
 
 public interface MemberService {
-    public Member saveMember(MemberRepository memberRepository,Member member) ;
+    public Member addHeadMember(MemberRepository memberRepository,Member member) throws Exception;
 
-    public List<Member> getMembers(MemberRepository memberRepository);
+    public Member addMember(MemberRepository memberRepository,Member member,String applicationId) throws Exception ;
+
+    public List<Member> getMembers(MemberRepository memberRepository,String applicationId);
 
     public Member getMember(MemberRepository memberRepository,String id);
 
+    public Member editMember(MemberRepository memberRepository,Member member,String applicationId) throws Exception;
+
+    public boolean deleteMember(MemberRepository memberRepository,String id);
 
 }

@@ -14,6 +14,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
+import java.util.UUID;
 
 
 @Entity
@@ -52,6 +54,12 @@ public class Member {
 
     //private String relationWithHead;
 
+    @PrePersist
+    private void ensureMemberId(){
+        this.setMemberId(String.valueOf((new Random()).nextLong()));
+    }
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -86,10 +94,7 @@ public class Member {
     public void setDateOfBirth(String dateOfBirth) throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            this.dateOfBirth =  sdf.parse(dateOfBirth);;
-            if(getAge()>125)
-                throw new MaxAgeExceededException();
-
+            this.dateOfBirth =  sdf.parse(dateOfBirth);
 
         } catch (ParseException e) {
             throw new InvalidDateException();
